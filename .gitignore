@@ -1,0 +1,36 @@
+# Local credentials and configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials*.json
+service-account*.json
+*-credentials.json
+
+# Hosting identity and local workspace metadata
+.openai/
+.sites-*/
+.sites-runtime/
+.agents/
+.codex/
+
+# Development and OS files
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+coverage/
+*.log
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+
+# Local packages and exports
+*.zip
+*.tar.gz

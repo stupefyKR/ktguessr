@@ -1,0 +1,14 @@
+{
+  "name": "streetlens-practice",
+  "version": "1.0.0",
+  "description": "Google Street View와 지도로 연습하는 지리 추측 웹 앱",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/core.test.mjs",
+    "dev": "node tests/serve.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

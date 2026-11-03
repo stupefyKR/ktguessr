@@ -1,0 +1,35 @@
+name: Checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: App and local launcher
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: |
+          node --check dist/app.mjs
+          node --check dist/core.mjs
+      - name: Test distance calculations and sampling
+        run: node --test tests/core.test.mjs
+      - name: Test local HTTP launcher
+        run: python -B -m unittest discover -s tests -p "test_launcher.py" -v
+      - name: Check Windows start file
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: start.cmd --check
